@@ -49,7 +49,7 @@ extension UIColor {
         var blue: CGFloat = 0
         var alpha: CGFloat = 0
 
-        let multiplier = CGFloat(255.999999)
+        let multiplier = CGFloat(255)
 
         guard !self.isEqual(UIColor.clear) else {
             return "none"
