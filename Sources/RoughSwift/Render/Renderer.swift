@@ -28,7 +28,7 @@ public class Renderer {
             shapeLayer.frame = layer.bounds
         }
 
-        handlePath2DIfAny(pairs: pairs, options: drawing.options)
+//        handlePath2DIfAny(pairs: pairs, options: drawing.options)
     }
 
     private func shapeLayer(set: OperationSet, options: Options) -> CAShapeLayer {

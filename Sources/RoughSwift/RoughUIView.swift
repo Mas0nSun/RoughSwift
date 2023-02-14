@@ -42,11 +42,17 @@ final class RoughUIView: UIView {
             $0.removeFromSuperlayer()
         }
 
-        let renderer = Renderer(layer: layer)
+        let renderer = PathRenderer()
         let generator = Engine.shared.generator(size: bounds.size)
         for drawable in drawables {
             if let drawing = generator.generate(drawable: drawable, options: options) {
-                renderer.render(drawing: drawing)
+                let shapeLayer = CAShapeLayer()
+                shapeLayer.fillColor = UIColor.clear.cgColor
+                shapeLayer.frame = bounds
+                shapeLayer.path = renderer.render(drawing: drawing).cgPath
+                shapeLayer.strokeColor = options.fill.cgColor
+//                shapeLayer.fillColor = options.s.cgColor
+                layer.addSublayer(shapeLayer)
             }
         }
     }
