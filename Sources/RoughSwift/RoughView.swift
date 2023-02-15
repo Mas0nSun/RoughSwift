@@ -5,25 +5,26 @@
 //  Created by khoa on 26/03/2022.
 //
 
-import UIKit
 import SwiftUI
 
-public struct RoughView: UIViewRepresentable {
+public struct RoughView: View {
     var options = Options()
     var drawables: [Drawable] = []
 
-    public init() {}
+    public init() { }
 
-    public func makeUIView(context: Context) -> UIView {
-        let view = RoughUIView()
-        return view
-    }
-
-    public func updateUIView(_ uiView: UIView, context: Context) {
-        guard let view = uiView as? RoughUIView else { return }
-        view.drawbles = drawables
-        view.options = options
-        view.setNeedsLayout()
+    public var body: some View {
+        GeometryReader { proxy in
+            let generator = Engine.shared.generator(size: proxy.size)
+            ForEach(drawables.indices, id: \.self) { index in
+                if let drawing = generator.generate(
+                    drawable: drawables[index],
+                    options: options
+                ) {
+                    DrawingView(drawing: drawing)
+                }
+            }
+        }
     }
 }
 
