@@ -38,7 +38,7 @@ public struct RoughShape: View {
                 Color(options.fill),
                 lineWidth: {
                     if options.fillWeight < 0 {
-                        return CGFloat(options.strokeWidth / 2)
+                        return CGFloat(options.strokeWidth)
                     } else {
                         return CGFloat(options.fillWeight)
                     }
@@ -53,7 +53,7 @@ public struct RoughShape: View {
                 Color(options.fill),
                 lineWidth: {
                     if options.fillWeight < 0 {
-                        return CGFloat(options.strokeWidth / 2)
+                        return CGFloat(options.strokeWidth)
                     } else {
                         return CGFloat(options.fillWeight)
                     }
