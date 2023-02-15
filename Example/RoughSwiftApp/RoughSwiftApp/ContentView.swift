@@ -72,55 +72,62 @@ struct SVGView: View {
 }
 
 struct StylesView: View {
+    @State private var color: Color = .orange
+    @State private var strokeWidth: Float = 1
+
     var body: some View {
-        LazyVGrid(columns: [.init(), .init(), .init()], spacing: 12) {
-            RoughView()
-                .fill(.red)
-                .fillStyle(.crossHatch)
-                .circle()
-                .frame(width: 100, height: 100)
+        VStack {
+            Slider(value: $strokeWidth, in: 1...10)
+            
+            LazyVGrid(columns: [.init(), .init(), .init()], spacing: 12) {
+                RoughView()
+                    .fill(.red)
+                    .fillStyle(.crossHatch)
+                    .circle()
+                    .frame(width: 100, height: 100)
 
-            RoughView()
-                .fill(.green)
-                .fillStyle(.dashed)
-                .circle()
-                .frame(width: 100, height: 100)
+                RoughView()
+                    .fill(.green)
+                    .fillStyle(.dashed)
+                    .circle()
+                    .frame(width: 100, height: 100)
 
-            RoughView()
-                .fill(.purple)
-                .fillStyle(.dots)
-                .circle()
-                .frame(width: 100, height: 100)
+                RoughView()
+                    .fill(.purple)
+                    .fillStyle(.dots)
+                    .circle()
+                    .frame(width: 100, height: 100)
 
-            RoughView()
-                .fill(.cyan)
-                .fillStyle(.hachure)
-                .circle()
-                .frame(width: 100, height: 100)
+                RoughView()
+                    .fill(.cyan)
+                    .fillStyle(.hachure)
+                    .circle()
+                    .frame(width: 100, height: 100)
 
-            RoughView()
-                .fill(.orange)
-                .fillStyle(.solid)
-                .circle()
-                .frame(width: 100, height: 100)
+                RoughView()
+                    .fill(.orange)
+                    .fillStyle(.solid)
+                    .circle()
+                    .frame(width: 100, height: 100)
 
-            RoughView()
-                .fill(.gray)
-                .fillStyle(.starBurst)
-                .circle()
-                .frame(width: 100, height: 100)
+                RoughView()
+                    .fill(.gray)
+                    .fillStyle(.starBurst)
+                    .circle()
+                    .frame(width: 100, height: 100)
 
-            RoughView()
-                .fill(.yellow)
-                .fillStyle(.zigzag)
-                .circle()
-                .frame(width: 100, height: 100)
+                RoughView()
+                    .fill(.yellow)
+                    .fillStyle(.zigzag)
+                    .circle()
+                    .frame(width: 100, height: 100)
 
-            RoughView()
-                .fill(.systemTeal)
-                .fillStyle(.zigzagLine)
-                .circle()
-                .frame(width: 100, height: 100)
+                RoughView()
+                    .fill(.systemTeal)
+                    .fillStyle(.zigzagLine)
+                    .circle()
+                    .frame(width: 100, height: 100)
+            }
         }
     }
 }
