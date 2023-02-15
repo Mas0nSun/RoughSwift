@@ -36,7 +36,13 @@ public struct RoughShape: View {
         case .fillSketch:
             path.stroke(
                 Color(options.fill),
-                lineWidth: CGFloat(max(options.fillWeight, options.strokeWidth / 2))
+                lineWidth: {
+                    if options.fillWeight < 0 {
+                        return CGFloat(options.strokeWidth / 2)
+                    } else {
+                        return CGFloat(options.fillWeight)
+                    }
+                }()
             )
         case .fillPath:
             path.fill(Color(options.fill))
@@ -45,7 +51,13 @@ public struct RoughShape: View {
         case .path2DPattern:
             path.stroke(
                 Color(options.fill),
-                lineWidth: CGFloat(max(options.fillWeight, options.strokeWidth / 2))
+                lineWidth: {
+                    if options.fillWeight < 0 {
+                        return CGFloat(options.strokeWidth / 2)
+                    } else {
+                        return CGFloat(options.fillWeight)
+                    }
+                }()
             )
         }
     }
